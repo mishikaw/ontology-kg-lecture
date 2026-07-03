@@ -8,24 +8,24 @@
 |---|---|
 | `00_コース目次と内容説明.md` | コース全体の目次・各章の学習目標と内容 |
 | `01`〜`11_*.md` | 各章のスライド(Marp形式、全11章) |
+| `build/*.pptx` | Marpから変換済みのPowerPointスライド(全11章) |
 
-各スライドの直後に HTMLコメント `<!-- ... -->` で講師ノート(話すポイントの箇条書き)を記載。Marp ではプレゼンターノートとして扱われる。
+各スライドの直後に HTMLコメント `<!-- ... -->` で講師ノート(話すポイントの箇条書き)を記載。Marp ではプレゼンターノートとして扱われ、PPTXではスピーカーノート欄に入る。
 
 ## スライドのビルド(Marp)
+
+変換済みPPTXは `build/` 配下にコミット済み。ソース(`.md`)を更新したら以下で再生成する。
 
 ```bash
 # Marp CLI(要 Node.js)
 npm install -g @marp-team/marp-cli
 
-# HTMLに変換
+# PPTXに変換(全章一括、build/ に出力)
+for f in 0[1-9]*.md 1[01]*.md; do marp --pptx "$f" -o "build/${f%.md}.pptx"; done
+
+# HTML / PDF に変換する場合
 marp 01_なぜLLMにはKnowledge\ Graphが必要か.md -o build/01.html
-
-# PDF / PPTX に変換
 marp --pdf --allow-local-files 01_*.md
-marp --pptx 01_*.md
-
-# 全章一括
-for f in 0[1-9]*.md 1[01]*.md; do marp --pdf "$f" -o "build/${f%.md}.pdf"; done
 
 # プレビュー(VS Code の場合は Marp for VS Code 拡張を推奨)
 marp -s .
