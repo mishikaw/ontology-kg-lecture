@@ -9,19 +9,60 @@ style: |
     font-size: 24px;
     justify-content: flex-start;
     padding-top: 70px;
+    color: #0E2841;
+    background: #FFFFFF;
+    font-family: "Noto Sans JP", "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic Pro", Arial, sans-serif;
   }
   section.title {
     justify-content: center;
     text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, #FFFFFF 55%, #E6F7F7 100%);
   }
-  h1 { font-size: 40px; color: #1a5276; }
-  h2 { font-size: 32px; color: #1a5276; border-bottom: 2px solid #1a5276; padding-bottom: 4px; }
-  table { font-size: 20px; }
+  section.title::before {
+    content: "";
+    position: absolute;
+    top: 36px;
+    left: 40px;
+    width: 26px;
+    height: 26px;
+    background: #0BA6AA;
+  }
+  section.title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 14px;
+    background: linear-gradient(90deg, #0E2841 0%, #0BA6AA 100%);
+  }
+  h1 { font-size: 40px; color: #0E2841; }
+  h2 {
+    font-size: 32px;
+    color: #0E2841;
+    border-bottom: 3px solid #0BA6AA;
+    padding: 0 0 4px 16px;
+    position: relative;
+  }
+  h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background: #0BA6AA;
+  }
+  table { font-size: 20px; border-collapse: collapse; }
+  table th { background: #0E2841; color: #FFFFFF; }
+  table th, table td { border: 1px solid #92AAB7; }
   code { font-size: 90%; }
-  pre { font-size: 18px; line-height: 1.35; }
-  blockquote { background: #eaf2f8; border-left: 6px solid #1a5276; padding: 8px 16px; }
+  pre { font-size: 18px; line-height: 1.35; background: #F4F7F8; }
+  blockquote { background: #E6F7F7; border-left: 6px solid #0BA6AA; padding: 8px 16px; color: #0E2841; }
   .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .small { font-size: 18px; }
+  footer, header { color: #0BA6AA; }
 ---
 
 <!-- _class: title -->
